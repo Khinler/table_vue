@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
+        integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Maria Paula</title>
+    <link rel="icon vue" href="http://assets.stickpng.com/thumbs/58482acecef1014c0b5e4a1e.png">
+</head>
+
+<body>
+    <div class="container my-4">
+        <main>
+            <div class="card mx-auto" style="width: 30rem;">
+                <img src="https://image.cnbcfm.com/api/v1/image/104906175-GettyImages-843466180.jpg?v=1560827671&w=678&h=381"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <form @submit.prevent="">
+                        <div class="form-group">
+                            <label for="codeasg">CODIGO ASIGNATURA</label>
+                            <input type="text" name="codA" v-model="codA" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="nombra">NOMBRE ASIGNATURA</label>
+                            <input type="text" name="nomA" v-model="nomA" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="ncreditos">NUMERO CREDITOS</label>
+                            <input type="text" name="numC" v-model="numC" autofocus="autofocus" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="nsemestre">NUMERO SEMESTRE</label>
+                            <input type="text" name="sem" v-model="sem" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="tipas">TIPO DE ASIGNATURA</label>
+                            <input type="text" name="tipoA" v-model="tipoA" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="codeprogr">CODIGO DEL PROGRAMA</label>
+                            <input type="text" name="dir" v-model="codP" class="form-control">
+                        </div>
+                        <button class="btn btn-success btn-block" name="agregar" v-if="registrarEst"
+                            v-on:click="agregar">Agregar</button>
+                        <button class="btn btn-dark btn-block" v-if="!registrarEst" v-on:click="agregar">Actualizar</button>
+                    </form>
+                </div>
+            </div> <!-- Cierre cards -->
+            <div class="table table-responsive mx-4 my-3">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="table-danger">CODIGO ASIGNATURA</th>
+                            <th class="table-danger">NOMBRE ASIGNATURA</th>
+                            <th class="table-danger">NUMERO CREDITOS</th>
+                            <th class="table-danger">NUMERO SEMESTRE</th>
+                            <th class="table-danger">TIPO ASIGNATURA</th>
+                            <th class="table-danger">CODIGO DEL PROGRAMA</th>
+                            <th class="table-danger">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for='dia,index in asignatura'>
+                            <td class="table-info">{{dia.codA}}</td>
+                            <td class="table-warning">{{dia.nomA}}</td>
+                            <td class="table-secondary">{{dia.numC}}</td>
+                            <td class="editcolor">{{dia.sem}}</td>
+                            <td class="table-success">{{dia.tipoA}}</td>
+                            <td class="table-light">{{dia.codP}}</td>
+                            <td class="table-dark">
+                                <button class="btn btn-success sm mx-2 my-2" v-on:click="editar(index)">Editar</button>
+                                <button class="btn btn-danger sm" v-on:click="eliminar(index)">Eliminar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="app41.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"
+        integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
